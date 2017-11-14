@@ -110,7 +110,7 @@ function getErrorMessage(field) {
 
 //Testing get method with node
 
-app.get('/test', function(req, res) {
+app.post('/file', function(req, res) {
 	logger.debug('End pt : /test');
 	res.json(getErrorMessage('\'username\''));
 	return;

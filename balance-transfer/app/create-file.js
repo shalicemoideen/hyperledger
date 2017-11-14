@@ -64,22 +64,22 @@ var createFile = function(channelName, channelConfigPath, username, orgName) {
 
 		// queryCar chaincode function - requires 1 argument, ex: args: ['CAR4'],
 		// queryAllCars chaincode function - requires no arguments , ex: args: [''],
-		const request = {
-			//targets : --- letting this default to the peers assigned to the channel
-			chaincodeId: 'fabcar',
-			fcn: 'createFile',
-			args: ['car9','image.jpg','123456789']
-		};
-
-
-		// To query single CAR details from ledger
-
 		// const request = {
-		//   //targets : --- letting this default to the peers assigned to the channel
-		//   chaincodeId: 'fabcar',
-		//   fcn: 'queryCar',
-		//   args: ['CAR4']
+		// 	//targets : --- letting this default to the peers assigned to the channel
+		// 	chaincodeId: 'fabcar',
+		// 	fcn: 'createFile',
+		// 	args: ['car9','image.jpg','123456789']
 		// };
+
+
+		To query single CAR details from ledger
+
+		const request = {
+		  //targets : --- letting this default to the peers assigned to the channel
+		  chaincodeId: 'fabcar',
+		  fcn: 'queryCar',
+		  args: ['CAR4']
+		};
 
 		// send the query proposal to the peer
 		return channel.queryByChaincode(request);
