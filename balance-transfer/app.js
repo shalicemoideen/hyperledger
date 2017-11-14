@@ -53,37 +53,37 @@ app.use(bodyParser.urlencoded({
 }));
 // set secret variable
 app.set('secret', 'thisismysecret');
-app.use(expressJWT({
-	secret: 'thisismysecret'
-}).unless({
-	path: ['/users']
-}));
-app.use(bearerToken());
-app.use(function(req, res, next) {
-	if (req.originalUrl.indexOf('/users') >= 0) {
-		return next();
-	}
+// app.use(expressJWT({
+// 	secret: 'thisismysecret'
+// }).unless({
+// 	path: ['/users']
+// }));
+// app.use(bearerToken());
+// app.use(function(req, res, next) {
+// 	if (req.originalUrl.indexOf('/users') >= 0) {
+// 		return next();
+// 	}
 
-	var token = req.token;
-	jwt.verify(token, app.get('secret'), function(err, decoded) {
-		if (err) {
-			res.send({
-				success: false,
-				message: 'Failed to authenticate token. Make sure to include the ' +
-					'token returned from /users call in the authorization header ' +
-					' as a Bearer token'
-			});
-			return;
-		} else {
-			// add the decoded user name and org name to the request object
-			// for the downstream code to use
-			req.username = decoded.username;
-			req.orgname = decoded.orgName;
-			logger.debug(util.format('Decoded from JWT token: username - %s, orgname - %s', decoded.username, decoded.orgName));
-			return next();
-		}
-	});
-});
+// 	var token = req.token;
+// 	jwt.verify(token, app.get('secret'), function(err, decoded) {
+// 		if (err) {
+// 			res.send({
+// 				success: false,
+// 				message: 'Failed to authenticate token. Make sure to include the ' +
+// 					'token returned from /users call in the authorization header ' +
+// 					' as a Bearer token'
+// 			});
+// 			return;
+// 		} else {
+// 			// add the decoded user name and org name to the request object
+// 			// for the downstream code to use
+// 			req.username = decoded.username;
+// 			req.orgname = decoded.orgName;
+// 			logger.debug(util.format('Decoded from JWT token: username - %s, orgname - %s', decoded.username, decoded.orgName));
+// 			return next();
+// 		}
+// 	});
+// });
 
 ///////////////////////////////////////////////////////////////////////////////
 //////////////////////////////// START SERVER /////////////////////////////////
@@ -105,6 +105,16 @@ function getErrorMessage(field) {
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////// REST ENDPOINTS START HERE ///////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
+
+
+
+//Testing get method with node
+
+app.get('/test', function(req, res) {
+	logger.debug('End pt : /test');
+	res.json(getErrorMessage('\'username\''));
+	return;
+});
 // Register and enroll user
 app.post('/users', function(req, res) {
 	var username = req.body.username;
