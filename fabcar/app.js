@@ -113,6 +113,7 @@ function getErrorMessage(field) {
 
 app.get('/file', function(req, res) {
 	logger.debug('End pt : /test');
+	process.exit();
 
 	files.createFile()
 	.then(function(message) {
