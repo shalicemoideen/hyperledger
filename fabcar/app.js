@@ -112,6 +112,7 @@ function getErrorMessage(field) {
 //Testing get method with node
 
 app.get('/file', function(req, res) {
+	console.log('test');
 	logger.debug('End pt : /test');
 	process.exit();
 
