@@ -13,11 +13,11 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-var util = require('util');
-var fs = require('fs');
-var path = require('path');
-var config = require('../config.json');
-var helper = require('./helper.js');
+// var util = require('util');
+// var fs = require('fs');
+// var path = require('path');
+// var config = require('../config.json');
+// var helper = require('./helper.js');
 // var logger = helper.getLogger('Create-Channel');
 //Attempt to send a request to the orderer with the sendCreateChain method
 var createFile = function() {
