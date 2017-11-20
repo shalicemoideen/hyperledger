@@ -122,7 +122,7 @@ logger.debug('End pt : /test');
 	files.createFile(function(err,user){
 		if(err) return res.status(500).send("Error Message defualt");
 		console.log(user,"User details comes here");
-		res.status(200).send(user);
+		return res.status(200).send(user);
 	});
 });
 
