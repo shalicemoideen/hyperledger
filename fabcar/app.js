@@ -140,10 +140,10 @@ app.get('/file', function(req, res) {
 	logger.debug('End pt : /test');
 	
 
-	files.createFile();
-	// .then(function(message) {
-	// 	res.send(message);
-	// });
+	files.createFile()
+	.then(function(message) {
+		res.send(message);
+	});
 });
 // Register and enroll user
 app.post('/users', function(req, res) {

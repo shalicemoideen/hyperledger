@@ -95,7 +95,13 @@ var createFile = function(req, res) {
 			} else {
 
 				console.log("Response is ", query_responses[0].toString());
-				return res.status(200).send(query_responses[0].toString());
+
+				let response = {
+					success: true,
+					message: 'Channel \'' + query_responses[0].toString() + '\' created Successfully'
+				};
+				return response;
+				
 			}
 		} else {
 			console.log("No payloads were returned from query");
