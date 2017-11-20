@@ -93,7 +93,9 @@ var createFile = function() {
 			if (query_responses[0] instanceof Error) {
 				console.error("error from query = ", query_responses[0]);
 			} else {
+
 				console.log("Response is ", query_responses[0].toString());
+				return query_responses[0].toString();
 			}
 		} else {
 			console.log("No payloads were returned from query");
