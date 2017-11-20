@@ -13,11 +13,11 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-// var util = require('util');
-// var fs = require('fs');
-// var path = require('path');
-// var config = require('../config.json');
-// var helper = require('./helper.js');
+var util = require('util');
+var fs = require('fs');
+var path = require('path');
+var config = require('../config.json');
+var helper = require('./helper.js');
 // var logger = helper.getLogger('Create-Channel');
 //Attempt to send a request to the orderer with the sendCreateChain method
 var createFile = function() {
@@ -25,6 +25,7 @@ var createFile = function() {
 	var path = require('path');
 	var util = require('util');
 	var os = require('os');
+	console.log("createFile starts here ----------");
 
 	//
 	var fabric_client = new Fabric_Client();

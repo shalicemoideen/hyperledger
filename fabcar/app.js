@@ -109,17 +109,35 @@ function getErrorMessage(field) {
 
 //Test for bitbucket
 
+
+app.get('/application', function(req, res) {
+console.log('test');
+logger.debug('End pt : /test');
+
+
+// files.createFile()
+// .then(function(message) {
+// res.send(message);
+// });
+	files.createFile(function(err,user){
+		if(err) return res.status(500).send("Error Message defualt")
+		res.status(200).send(user);
+	});
+});
+
+
+
 //Testing get method with node
 
 app.get('/file', function(req, res) {
-	console.log('test');
+	console.log('End pt :  /test');
 	logger.debug('End pt : /test');
-	process.exit();
+	
 
-	files.createFile()
-	.then(function(message) {
-		res.send(message);
-	});
+	files.createFile();
+	// .then(function(message) {
+	// 	res.send(message);
+	// });
 });
 // Register and enroll user
 app.post('/users', function(req, res) {
