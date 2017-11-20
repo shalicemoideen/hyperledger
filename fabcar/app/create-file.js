@@ -20,7 +20,7 @@
 // var helper = require('./helper.js');
 // var logger = helper.getLogger('Create-Channel');
 //Attempt to send a request to the orderer with the sendCreateChain method
-var createFile = function() {
+var createFile = function(req, res) {
 	var Fabric_Client = require('fabric-client');
 	var path = require('path');
 	var util = require('util');
@@ -95,7 +95,7 @@ var createFile = function() {
 			} else {
 
 				console.log("Response is ", query_responses[0].toString());
-				return query_responses[0].toString();
+				return res.status(200).send(query_responses[0].toString());
 			}
 		} else {
 			console.log("No payloads were returned from query");
