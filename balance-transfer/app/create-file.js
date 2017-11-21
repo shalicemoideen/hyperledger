@@ -78,6 +78,7 @@ var createFile = function(userid, fileid, hash, name) {
 
 
 		// To query single CAR details from ledger
+		console.log(userid,"userid");
 
 		const request = {
 		  //targets : --- letting this default to the peers assigned to the channel
