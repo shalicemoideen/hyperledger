@@ -27,6 +27,7 @@ var expressJWT = require('express-jwt');
 var jwt = require('jsonwebtoken');
 var bearerToken = require('express-bearer-token');
 var cors = require('cors');
+var qs = require('qs');
 
 require('./config.js');
 var hfc = require('fabric-client');
@@ -147,7 +148,11 @@ app.post('/getFile', function(req, res) {
 	var fileid = req.body.fileid;
 	var hash = req.body.hash;
 	var name = req.body.name;
-	
+
+
+	var parsedUrl = qs.parse(url.parse(req.url).query);
+    var email = parsedUrl.userid || req.body.userid;
+	console.log(email,"from qs");
 	files.createFile(userid, fileid, hash, name)
 	.then(function(message) {
 		console.log("Response comes here");
