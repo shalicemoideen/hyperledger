@@ -101,7 +101,7 @@ var createFile = function(req, res) {
 
 				let response = {
 					success: true,
-					message: 'Channel \'' + query_responses[0].toString() + '\' created Successfully'
+					message: 'Channel created Successfully'
 				};
 				return response;
 				
