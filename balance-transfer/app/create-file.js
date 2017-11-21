@@ -20,7 +20,7 @@ var config = require('../config.json');
 var helper = require('./helper.js');
 var logger = helper.getLogger('Create-Channel');
 //Attempt to send a request to the orderer with the sendCreateChain method
-var createFile = function(req, res) {
+var createFile = function() {
 	var Fabric_Client = require('fabric-client');
 	var path = require('path');
 	var util = require('util');
@@ -99,10 +99,11 @@ var createFile = function(req, res) {
 
 				console.log("Response is ", query_responses[0].toString());
 
-				let response = {
+				var response = {
 					success: true,
 					message: 'Channel created Successfully'
 				};
+				console.log(response,"response");
 				return response;
 				
 			}

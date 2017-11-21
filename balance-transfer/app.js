@@ -141,11 +141,16 @@ app.get('/file', function(req, res) {
 	logger.debug('End pt : /test');
 	
 
-	files.createFile(req, res)
+	// files.createFile(req, res)
+	// .then(function(message) {
+	// 	res.send(message);
+	// }).catch((err) => {
+	// 	console.error('Failed to query from create file :: ' + err);
+	// });
+
+	files.createFile()
 	.then(function(message) {
 		res.send(message);
-	}).catch((err) => {
-		console.error('Failed to query from create file :: ' + err);
 	});
 });
 
