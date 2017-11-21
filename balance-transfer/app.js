@@ -141,6 +141,7 @@ app.post('/getFile', function(req, res) {
 	logger.debug('End pt : /test');
 
 	var userid = req.body.userid;
+	console.log(userid,"Userid from browser");
 	var fileid = req.body.fileid;
 	var hash = req.body.hash;
 	var name = req.body.name;
