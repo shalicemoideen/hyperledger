@@ -52,6 +52,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
+//Body parser
+app.use(express.bodyParser());
 // set secret variable
 app.set('secret', 'thisismysecret');
 // app.use(expressJWT({
