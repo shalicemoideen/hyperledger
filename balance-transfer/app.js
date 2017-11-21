@@ -28,6 +28,7 @@ var jwt = require('jsonwebtoken');
 var bearerToken = require('express-bearer-token');
 var cors = require('cors');
 var qs = require('qs');
+var url = require('url');
 
 require('./config.js');
 var hfc = require('fabric-client');
