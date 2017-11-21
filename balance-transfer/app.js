@@ -50,10 +50,10 @@ app.use(cors());
 app.use(bodyParser.json());
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({
-	extended: false
+	extended: true
 }));
-//Body parser
-app.use(express.bodyParser());
+
+
 // set secret variable
 app.set('secret', 'thisismysecret');
 // app.use(expressJWT({
