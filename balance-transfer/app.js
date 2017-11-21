@@ -144,16 +144,19 @@ app.post('/getFile', function(req, res) {
 	console.log('End pt :  /test');
 	logger.debug('End pt : /test');
 
-	var userid = req.body.userid;
-	console.log(userid,"Userid from browser");
-	var fileid = req.body.fileid;
-	var hash = req.body.hash;
-	var name = req.body.name;
+	// var userid = req.body.userid;
+	// console.log(userid,"Userid from browser");
+	// var fileid = req.body.fileid;
+	// var hash = req.body.hash;
+	// var name = req.body.name;
 
 
 	var parsedUrl = qs.parse(url.parse(req.url).query);
-    var email = parsedUrl.userid || req.body.userid;
-	console.log(email,"from qs");
+    var userid = parsedUrl.userid || req.body.userid;
+    var fileid = parsedUrl.fileid || req.body.fileid;
+    var hash = parsedUrl.hash || req.body.hash;
+    var name = parsedUrl.name || req.body.name;
+	console.log(userid,"from qs");
 	files.createFile(userid, fileid, hash, name)
 	.then(function(message) {
 		console.log("Response comes here");
