@@ -20,7 +20,7 @@ var config = require('../config.json');
 var helper = require('./helper.js');
 var logger = helper.getLogger('Create-Channel');
 //Attempt to send a request to the orderer with the sendCreateChain method
-var createFile = function() {
+var createFile = function(userid, fileid, hash, name) {
 	var Fabric_Client = require('fabric-client');
 	var path = require('path');
 	var util = require('util');
@@ -82,8 +82,8 @@ var createFile = function() {
 		const request = {
 		  //targets : --- letting this default to the peers assigned to the channel
 		  chaincodeId: 'fabcar',
-		  fcn: 'queryCar',
-		  args: ['CAR4']
+		  fcn: 'createFile',
+		  args: [userid, fileid, hash, name]
 		};
 
 		// send the query proposal to the peer

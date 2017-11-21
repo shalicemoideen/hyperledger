@@ -54,22 +54,22 @@ let Chaincode = class {
 
   async initLedger(stub, args) {
     console.info('============= START : Initialize Ledger ===========');
-    let cars = [];
-    cars.push({
-      make: 'Toyota',
-      model: 'Prius',
-      color: 'blue',
-      owner: 'Tomoko'
-    });
-    console.info(cars);
+    // let cars = [];
+    // cars.push({
+    //   make: 'Toyota',
+    //   model: 'Prius',
+    //   color: 'blue',
+    //   owner: 'Tomoko'
+    // });
+    // console.info(cars);
 
-    var arFile = {
-      '1' : {'hash':'12345hash1','file':'12345jpg1'},
-      '2' : {'hash':'12345hash2','file':'12345jpg2'}
-      };
-    console.info(arFile);
+    // var arFile = {
+    //   '1' : {'hash':'12345hash1','file':'12345jpg1'},
+    //   '2' : {'hash':'12345hash2','file':'12345jpg2'}
+    //   };
+    // console.info(arFile);
     
-    await stub.putState('shalice', Buffer.from(JSON.stringify(arFile)));
+    // await stub.putState('shalice', Buffer.from(JSON.stringify(arFile)));
     
 
     // for (let i = 0; i < cars.length; i++) {
@@ -107,31 +107,45 @@ let Chaincode = class {
     //   throw new Error('Incorrect number of arguments, Expecting 5');
     // }
     var testfile = [];
+
+    var userid = args[0];
+    var fileid = args[1];
+    var hash = args[2];
+    var name = args[3];
+
+
+    // let userAsBytes = await stub.getState(userid);
+    // console.log("User details");
+    // console.log(userAsBytes);
     
     var file = {
-      hash: args[0],
-      name: args[1]
+      hash: args[2],
+      name: args[3]
     };
 
     console.info(JSON.stringify(file));
 
+    // var arFile = {
+    //   '12345':{
+    //     '1' : {'hash':'12345hash1','file':'12345jpg1'},
+    //     '2' : {'hash':'12345hash2','file':'12345jpg2'}
+    //   }
+    // };
+
     var arFile = {
-      '12345':{
-        '1' : {'hash':'12345hash1','file':'12345jpg1'},
-        '2' : {'hash':'12345hash2','file':'12345jpg2'}
-      }
+      fileid : {'hash': args[2],'file': args[3] }
     };
 
-    var car = {
-      docType: 'car',
-      make: args[1],
-      model: args[2],
-      color: args[3],
-      owner: args[4]
-    };
+    // var car = {
+    //   docType: 'car',
+    //   make: args[1],
+    //   model: args[2],
+    //   color: args[3],
+    //   owner: args[4]
+    // };
     console.info(JSON.stringify(arFile));
 
-    await stub.putState(args[0], Buffer.from(JSON.stringify(arFile)));
+    await stub.putState(userid, Buffer.from(JSON.stringify(arFile)));
     console.info('============= END : Create File ===========');
   }
 

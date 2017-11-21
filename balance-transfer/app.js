@@ -136,19 +136,16 @@ logger.debug('End pt : /test');
 
 //Testing get method with node
 
-app.get('/file', function(req, res) {
+app.post('/getFile', function(req, res) {
 	console.log('End pt :  /test');
 	logger.debug('End pt : /test');
+
+	var userid = req.body.userid;
+	var fileid = req.body.fileid;
+	var hash = req.body.hash;
+	var name = req.body.name;
 	
-
-	// files.createFile(req, res)
-	// .then(function(message) {
-	// 	res.send(message);
-	// }).catch((err) => {
-	// 	console.error('Failed to query from create file :: ' + err);
-	// });
-
-	files.createFile()
+	files.createFile(userid, fileid, hash, name)
 	.then(function(message) {
 		console.log("Response comes here");
 		res.send(message);
