@@ -44,7 +44,7 @@ var createFile = function() {
 	var tx_id = null;
 
 	// create the key value store as defined in the fabric-client/config/default.json 'key-value-store' setting
-	Fabric_Client.newDefaultKeyValueStore({ path: store_path
+	return Fabric_Client.newDefaultKeyValueStore({ path: store_path
 	}).then((state_store) => {
 		// assign the store to the fabric client
 		fabric_client.setStateStore(state_store);
