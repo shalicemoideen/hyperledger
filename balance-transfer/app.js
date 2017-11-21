@@ -150,7 +150,10 @@ app.get('/file', function(req, res) {
 
 	files.createFile()
 	.then(function(message) {
+		console.log("Response comes here");
 		res.send(message);
+	}).catch((err) => {
+		console.error('Failed to query from create file :: ' + err);
 	});
 });
 
