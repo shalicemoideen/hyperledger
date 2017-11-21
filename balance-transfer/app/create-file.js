@@ -83,7 +83,7 @@ var createFile = function(userid, fileid, hash, name) {
 		const request = {
 		  //targets : --- letting this default to the peers assigned to the channel
 		  chaincodeId: 'fabcar',
-		  fcn: 'createFile',
+		  fcn: 'queryCar',
 		  args: ['car1', '100', 'testhash', 'image.png']
 		};
 
