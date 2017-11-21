@@ -20,14 +20,17 @@ var config = require('../config.json');
 var helper = require('./helper.js');
 var logger = helper.getLogger('Create-Channel');
 //Attempt to send a request to the orderer with the sendCreateChain method
-var createFile = function(channelName, channelConfigPath, username, orgName) {
+var createFile = function(req, res) {
 	var Fabric_Client = require('fabric-client');
 	var path = require('path');
 	var util = require('util');
 	var os = require('os');
+	console.log("createFile starts here ----------");
+	
 
 	//
 	var fabric_client = new Fabric_Client();
+
 
 	// setup the fabric network
 	var channel = fabric_client.newChannel('mychannel');
@@ -36,7 +39,7 @@ var createFile = function(channelName, channelConfigPath, username, orgName) {
 
 	//
 	var member_user = null;
-	var store_path = path.join(__dirname, 'hfc-key-store');
+	var store_path = path.join(__dirname, '../hfc-key-store');
 	console.log('Store path:'+store_path);
 	var tx_id = null;
 
@@ -52,8 +55,10 @@ var createFile = function(channelName, channelConfigPath, username, orgName) {
 		crypto_suite.setCryptoKeyStore(crypto_store);
 		fabric_client.setCryptoSuite(crypto_suite);
 
+
 		// get the enrolled user from persistence, this user will sign all requests
 		return fabric_client.getUserContext('user1', true);
+		console.log('User21 will be logged here');
 	}).then((user_from_store) => {
 		if (user_from_store && user_from_store.isEnrolled()) {
 			console.log('Successfully loaded user1 from persistence');
@@ -72,7 +77,7 @@ var createFile = function(channelName, channelConfigPath, username, orgName) {
 		// };
 
 
-		To query single CAR details from ledger
+		// To query single CAR details from ledger
 
 		const request = {
 		  //targets : --- letting this default to the peers assigned to the channel
@@ -90,7 +95,15 @@ var createFile = function(channelName, channelConfigPath, username, orgName) {
 			if (query_responses[0] instanceof Error) {
 				console.error("error from query = ", query_responses[0]);
 			} else {
+
 				console.log("Response is ", query_responses[0].toString());
+
+				let response = {
+					success: true,
+					message: 'Channel \'' + query_responses[0].toString() + '\' created Successfully'
+				};
+				return response;
+				
 			}
 		} else {
 			console.log("No payloads were returned from query");
@@ -101,4 +114,4 @@ var createFile = function(channelName, channelConfigPath, username, orgName) {
 
 };
 
-exports.createChannel = createChannel;
+exports.createFile = createFile;

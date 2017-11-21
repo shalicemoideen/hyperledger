@@ -32,6 +32,7 @@ require('./config.js');
 var hfc = require('fabric-client');
 
 var helper = require('./app/helper.js');
+var files = require('./app/create-file.js');
 var channels = require('./app/create-channel.js');
 var join = require('./app/join-channel.js');
 var install = require('./app/install-chaincode.js');
@@ -110,11 +111,46 @@ function getErrorMessage(field) {
 
 //Testing get method with node
 
-app.get('/file', function(req, res) {
-	logger.debug('End pt : /test');
-	res.json(getErrorMessage('\'username\''));
-	return;
+app.get('/application', function(req, res) {
+console.log('test');
+logger.debug('End pt : /test');
+
+
+// files.createFile()
+// .then(function(message) {
+// res.send(message);
+// });
+	files.createFile(function(err,user){
+		if(err) return res.status(500).send("Error Message defualt");
+		console.log(user,"User details comes here");
+		return res.status(200).send(user);
+
+		// res.json({
+		// 		success: true,
+		// 		message: user
+		// 	});
+	});
 });
+
+
+
+//Testing get method with node
+
+app.get('/file', function(req, res) {
+	console.log('End pt :  /test');
+	logger.debug('End pt : /test');
+	
+
+	files.createFile(req, res)
+	.then(function(message) {
+		res.send(message);
+	}).catch((err) => {
+		console.error('Failed to query from create file :: ' + err);
+	});
+});
+
+
+
 // Register and enroll user
 app.post('/users', function(req, res) {
 	var username = req.body.username;
