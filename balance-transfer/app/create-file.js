@@ -101,7 +101,7 @@ var createFile = function() {
 
 				var response = {
 					success: true,
-					message: 'Channel \'' + query_responses[0] + '\' created Successfully'
+					message: 'Channel' + query_responses[0] + 'created Successfully'
 				};
 				console.log(response,"response");
 				return response;
